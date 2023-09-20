@@ -7,7 +7,6 @@ import { spacing } from "../utils/sizes";
 
 export const Focus = ({addSubject}) => {
   const [subject, setSubject] = useState(null);
-  console.log(subject);
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -26,7 +25,6 @@ export const Focus = ({addSubject}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
   },
   button: {
     justifyContent: "center",

@@ -7,20 +7,27 @@ import {
   View,
   Text,
 } from "react-native";
-import { colors } from "./src/utils/colors";
-import { Focus } from "./src/features/focus";
 import { Timer } from "./src/features/timer";
+import { Focus } from "./src/features/focus";
+import { FocusHistory } from "./src/features/focusHistory";
+import { colors } from "./src/utils/colors";
 
 export default function App() {
   const [currentSubject, setCurrentSubject] = useState(null);
+  const [history, setHistory] = useState([])
   return (
     <SafeAreaView style={styles.container}>
       {!currentSubject ? (
+        <>
         <Focus addSubject={setCurrentSubject} />
+        <FocusHistory history={history} />
+        </>
       ) : (
         <Timer
           focusSubject={currentSubject}
-          onTimerEnd={() => {}}
+          onTimerEnd={(subject) => {
+            setHistory([...history, subject])
+          }}
           clearSubject={() => setCurrentSubject(null)}
         />
       )}
